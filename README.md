@@ -106,4 +106,10 @@ In order to test your Paypal you need to change paypal.ini settings:
 
 Business=your_sandbox_biz_test_account@email.com
 
+BE AWARE
+========
 
+Paypal needs to able to communicate with your website, that means some localhosts website will not work. To test it, check your IP (google "what's my ip"), go to http://netrenderer.com/ and try to render your site with your ip address and the path to your site. If you are using a router you need to open port 80 to your computer, example, if you are using d-link wireless router just go to "http://192.168.0.1", "Advanced", "Virtual server", "Virtual Servers List". Put:
+
+Application name = HTTP, public port 80, TCP.
+IP address: Your gateway IP (192.168.0.XXX), private port 80 (your apache port).

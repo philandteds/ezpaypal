@@ -56,6 +56,11 @@ o  eZ publish must be reachable from the internet:
    the Paypal service.
 
 
+Installation
+============
+Please read the INSTALL file for installation instructions.
+
+
 Troubleshooting
 ===============
 
@@ -71,39 +76,3 @@ Troubleshooting
    If you have find any problems not handled by this document or the FAQ you
    can contact eZ Systems trough the support system:
    http://ez.no/support_and_services
-
-Installation
-============
-Enable this extension, regenerate autoloads, clear cache, create a new "Event/Payment Gateway" workflow, select "paypal", set it as checkout-before trigger. Change paypal.ini settings.
-
-Paypal Sandbox
-==============
-
-Create a seller (business) account and a buyer account.
-
-Check your biz account and click "Enter sandbox test site".
-
-Go to Profile->More options
-
--Payment Receiving Preferences:
-
-For "Block payments sent to me in a currency I do not hold", check "No, accept them and convert them to U.S. Dollars".
-
--Instant Payment Notification Preferences
-
-For "Notification URL", put http://yoursite.com/paypal/notify_url
-For "IPN messages", check "Receive IPN messages (Enabled)"
-
--Website Payment Preferences
-
-Enable auto return.
-Return URL: http://yoursite.com/shop/checkout
-Payment Data Transfer (optional): On
-
--eZ publish settings
-
-In order to test your Paypal you need to change paypal.ini settings:
-
-Business=your_sandbox_biz_test_account@email.com
-
-

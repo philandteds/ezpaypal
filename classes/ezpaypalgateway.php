@@ -91,7 +91,7 @@ class eZPaypalGateway extends xrowRedirectEPaymentGateway
                 "&no_note=$noNote"              .
                 "&lc=$countryCode"              .
                 "&notify_url=$localHost" . $indexDir . "/paypal/notify_url/".
-                "&return=$localHost"     . $indexDir . "/xrowecommerce/checkout/" .
+                "&return=$localHost"     . $indexDir . "/shop/orderview/" . $orderID . '/' .
                 "&cancel_return=$localHost" . $indexDir . "/xrowecommerce/cart/";
 
         return $url;

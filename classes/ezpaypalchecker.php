@@ -34,8 +34,11 @@ class eZPaypalChecker extends xrowPaymentCallbackChecker
             return true;
         }
 
-        if( ( $this->checkDataField( 'protection_eligibility', 'Ineligible' ) or $this->checkDataField( 'protection_eligibility', 'PartiallyEligible' ) ) and $this->checkDataField( 'payment_status', 'Pending' ) and $this->checkDataField( 'pending_reason', 'paymentreview' ) )
-        {
+        if(
+			( $this->checkDataField( 'protection_eligibility', 'Ineligible' ) or $this->checkDataField( 'protection_eligibility', 'PartiallyEligible' ) )
+			and $this->checkDataField( 'payment_status', 'Pending' )
+			and ( $this->checkDataField( 'pending_reason', 'paymentreview' ) or $this->checkDataField( 'pending_reason', 'multi_currency' ) )
+        ) {
             return true;
         }
         return false;

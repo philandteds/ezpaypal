@@ -18,7 +18,7 @@ if ( $checker->createDataFromPOST() )
             eZDebug::writeDebug( "setupOrderAndPaymentObject success" );
             $amount = $checker->getFieldValue( 'mc_gross' );
             $currency = $checker->getFieldValue( 'mc_currency' );
-            if ( $checker->checkAmount( $amount ) && $checker->checkCurrency( $currency ) )
+            if ( $checker->checkAmount( $amount ) )
             {
                 $checker->approvePayment();
                 eZDebug::writeDebug( "approvePayment success" );

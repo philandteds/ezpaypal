@@ -94,10 +94,13 @@ class eZPaypalGateway extends xrowRedirectEPaymentGateway
                 "&cancel_return=$localHost" . $indexDir . "/xrowecommerce/cart/";
 
 
+        $time = strftime( "%d-%m-%Y %H-%M" );
         $sessionId = session_id();
         $processDump = "";
         print_r($process, $processDump);
-        eZDebug::writeError("##Paypal createRedirectionUrl: \nSession: $sessionId \nPaypal URL: $url\nprocess Parameter: $processDump");
+
+
+        eZDebug::writeError("## Paypal createRedirectionUrl:\n## $time\n \n## Session: $sessionId \n## Paypal URL: $url\n## Process Parameter: $processDump");
 
         return $url;
     }

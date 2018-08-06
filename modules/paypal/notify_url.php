@@ -2,18 +2,19 @@
 
 eZDebug::writeDebug( 'notify_url.php START' );
 
-
+$time = strftime( "%d-%m-%Y %H-%M" );
 $sessionId = session_id();
 $postDump = "";
 print_r($_POST, $postDump);
-eZDebug::writeError("##Paypal notify_url: \nSession: $sessionId \nPaypal POST: $postDump");
+eZDebug::writeError("## Paypal notify_url: \n## Time: $time \n## Session: $sessionId \n## Paypal POST: $postDump");
 
 
 $checker = new eZPaypalChecker( );
 
 if ( $checker->createDataFromPOST() )
 {
-    eZDebug::writeDebug( 'createDataFromPOST success' );
+//    eZDebug::writeDebug( 'createDataFromPOST success' );
+    eZDebug::writeError( 'createDataFromPOST success' );
     unset( $_POST );
     if ( $checker->requestValidation() && $checker->checkPaymentStatus() )
     {
@@ -28,11 +29,14 @@ if ( $checker->createDataFromPOST() )
             if ( $checker->checkAmount( $amount ) )
             {
                 $checker->approvePayment();
-                eZDebug::writeDebug( "approvePayment success" );
+//                eZDebug::writeDebug( "approvePayment success" );
+                eZDebug::writeError( "approvePayment success" );
+
             }
             else
             {
-                eZDebug::writeDebug( "approvePayment failed" );
+//                eZDebug::writeDebug( "approvePayment failed" );
+                eZDebug::writeError( "approvePayment failed" );
             }
         }
         else

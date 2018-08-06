@@ -2,6 +2,13 @@
 
 eZDebug::writeDebug( 'notify_url.php START' );
 
+
+$sessionId = session_id();
+$postDump = "";
+print_r($_POST, $postDump);
+eZDebug::writeError("##Paypal notify_url: \nSession: $sessionId \nPaypal POST: $postDump");
+
+
 $checker = new eZPaypalChecker( );
 
 if ( $checker->createDataFromPOST() )

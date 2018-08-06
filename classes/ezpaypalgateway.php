@@ -7,7 +7,6 @@ class eZPaypalGateway extends xrowRedirectEPaymentGateway
     function __construct()
     {
             $this->logger   = eZPaymentLogger::CreateForAdd( "var/log/eZPaypalType.log" );
-            $this->logger->writeTimedString( 'eZPaypalGateway::eZPaypalGateway()' );
     }
     function name()
     {
@@ -25,7 +24,7 @@ class eZPaypalGateway extends xrowRedirectEPaymentGateway
     function createRedirectionUrl( $process )
     {
         //__DEBUG__
-            $this->logger->writeTimedString("createRedirectionUrl");
+            $this->logger->writeTimedString("createRedirectionUrl ");
         //___end____
 
         $paypalINI      = eZINI::instance( 'paypal.ini' );
@@ -93,6 +92,12 @@ class eZPaypalGateway extends xrowRedirectEPaymentGateway
                 "&notify_url=$localHost" . $indexDir . "/paypal/notify_url/".
                 "&return=$localHost"     . $indexDir . "/shop/orderview/" . $orderID . '/' .
                 "&cancel_return=$localHost" . $indexDir . "/xrowecommerce/cart/";
+
+
+        $sessionId = session_id();
+        $processDump = "";
+        print_r($process, $processDump);
+        eZDebug::writeError("##Paypal createRedirectionUrl: \nSession: $sessionId \nPaypal URL: $url\nprocess Parameter: $processDump");
 
         return $url;
     }
